@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
   shuffleRepeatButton: {
     width: 25,
-    height: 25
+    height: 20
   },
 
   bottomSymbols: {
