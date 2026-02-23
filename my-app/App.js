@@ -31,8 +31,8 @@ export default function App() {
           }}
         />
 
-        <Tab.Screen name="Profile"
-          component={ProfileStack}
+        <Tab.Screen name="ProfileNavigationStack"
+          component={ProfileNavigationStack}
           options={{
             tabBarIcon: ({ color }) => <Ionicons name="person" size={20} color={color} />,
             tabBarLabel: ({ focused, color }) => <Text style={{ fontWeight: focused ? "bold" : "normal", color: color }}> Profile </Text>,

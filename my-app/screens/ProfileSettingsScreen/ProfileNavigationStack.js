@@ -5,7 +5,7 @@ import ProfileScreen from './ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
-export const ProfileStack = () => {
+export const ProfileNavigationStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Profile" component={ProfileScreen} />
