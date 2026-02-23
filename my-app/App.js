@@ -4,8 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeScreen from './screens/HomeScreen'
-import SettingsScreen from './screens/ProfileSettingsScreen/SettingsScreen'
-import { ProfileStack } from './screens/ProfileSettingsScreen/ProfileNavigationStack';
+import { ProfileNavigationStack } from './screens/ProfileSettingsScreen/ProfileNavigationStack';
 
 
 
