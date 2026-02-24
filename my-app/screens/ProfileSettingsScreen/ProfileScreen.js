@@ -1,11 +1,14 @@
 import { StyleSheet, Text, ScrollView, View, Button } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 
 const ProfileScreen = () => {
     const navigation = useNavigation();
+    const tabBarHeight = useBottomTabBarHeight();
+
     return (
-        <ScrollView style={styles.scrollContainer} contentContainerStyle={{ flex: 1 }}>
+        <ScrollView contentContainerStyle={{ flex: 1, paddingBottom: tabBarHeight }} style={styles.scrollContainer}>
             <View style={styles.container}>
                 <Text>
                     Profile
