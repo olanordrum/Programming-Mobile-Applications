@@ -1,4 +1,5 @@
-import { StyleSheet, Text, ScrollView, View, Image, Button, Alert } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Image, Button, Alert, useColorScheme } from 'react-native';
+import { ThemeColors } from "../constants/ThemeColors"
 
 const mockData = [
     {
@@ -23,10 +24,14 @@ const mockData = [
 
 
 const HomeScreen = () => {
+    const colorScheme = useColorScheme();
+    const theme = ThemeColors[colorScheme] ?? Colors.light;
+
+
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
             {mockData.map(i => (
-                <View key={i.id} style={styles.post}>
+                <View key={i.id}>
                     <View style={styles.PostHeader}>
                         <Image source={require('../assets/icon.png')} style={styles.profileImage}></Image>
                         <View>
@@ -39,10 +44,10 @@ const HomeScreen = () => {
                         style={styles.caption}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     </Text>
-                    <View style={styles.button}>
+                    <View style={[styles.buttonView, { backgroundColor: ThemeColors.accent }]}>
                         <Button
                             title="Press me"
-                            color={"grey"}
+                            color={theme.text}
                             onPress={() =>
                                 Alert.alert("Alert title", "Alert message", [
                                     {
@@ -68,7 +73,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        width: "100%"
     },
 
     PostHeader: {
@@ -99,8 +104,9 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
 
-    button: {
-        backgroundColor: "pink",
-        overflow: "hidden"
+    buttonView: {
+        alignItems: 'center',
+        borderWidth: 5,
+        borderColor: 'black'
     }
 });
