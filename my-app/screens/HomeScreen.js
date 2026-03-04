@@ -5,22 +5,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 const mockData = [
     {
-        id: '1',
-        name: 'Snow Biker',
-        location: 'Nørrebro',
-        image: require('../assets/goats.jpeg'),
-    },
-    {
-        id: '2',
-        name: 'Snow Biker 2',
-        location: 'Nørrebro',
-        image: require('../assets/goats.jpeg'),
-    },
-    {
-        id: '3',
-        name: 'Snow Biker',
-        location: 'Nørrebro',
-        image: require('../assets/goats.jpeg'),
+        date: Date("23")
     },
 ];
 
