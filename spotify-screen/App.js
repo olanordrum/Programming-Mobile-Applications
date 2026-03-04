@@ -51,7 +51,7 @@ export default function App() {
       </View>
       <View style={styles.discover}>
         <Text style={styles.discoverText}>Discover Cezinando</Text>
-        <Image style={styles.discoverImage} source={require('./assets/album.jpeg')} />
+        <Image style={styles.discoverImage} source={require('./assets/discoverCezinando.jpeg')} />
       </View>
     </ScrollView>
   );
@@ -175,17 +175,17 @@ const styles = StyleSheet.create({
 
   discover: {
     marginTop: 20,
-    paddingTop: 20,
-    backgroundColor: "lightgrey",
-    opacity: 60,
+    paddingTop: 10,
+    backgroundColor: "#18189e",
     borderRadius: 20,
-    gap: 20
+    gap: 10
   },
 
   discoverText: {
-    color: 'grey',
     fontWeight: 'bold',
-    paddingLeft: 20
+    paddingLeft: 20,
+    fontSize: 20,
+    color: 'white'
   },
 
   discoverImage: {
