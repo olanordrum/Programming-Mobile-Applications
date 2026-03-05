@@ -10,7 +10,7 @@ export const ThemeColors = {
 
     light: {
         background: "#c6c6c6",
-        navBackground: "D9D9D9",
+        navBackground: "#919191",
         surface: "",
         card: "",
         text: "#0b0a0a",

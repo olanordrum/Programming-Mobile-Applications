@@ -1,10 +1,12 @@
-import { Text } from 'react-native';
+import { Text, useColorScheme, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { BlurView } from 'expo-blur';
 
 import HomeScreen from './screens/HomeScreen'
 import { ProfileNavigationStack } from './screens/ProfileSettingsScreen/ProfileNavigationStack';
+import { ThemeColors } from './constants/ThemeColors';
 
 
 
@@ -12,13 +14,19 @@ import { ProfileNavigationStack } from './screens/ProfileSettingsScreen/ProfileN
 const Tab = createBottomTabNavigator()
 
 export default function App() {
+  const theme = useColorScheme();
+  const colors = ThemeColors[theme] ?? 'light';
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarLabelPosition: "below-icon",
-          tabBarActiveTintColor: "orange",
-          tabBarInactiveTintColor: "grey",
+          tabBarActiveTintColor: ThemeColors.accent,
+          tabBarInactiveTintColor: ThemeColors.primary,
+          tabBarStyle: { position: 'absolute' },
+          tabBarBackground: () => (
+            <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
+          ),
         }}
       >
         <Tab.Screen
@@ -42,3 +50,16 @@ export default function App() {
     </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  blurContainer: {
+    flex: 1,
+    padding: 20,
+    margin: 16,
+    textAlign: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    borderRadius: 20,
+  },
+})
+
