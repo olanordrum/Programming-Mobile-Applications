@@ -1,6 +1,49 @@
-import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, Image, Pressable } from 'react-native';
+
+const songs = [
+  {
+    id: 1,
+    title: "Rosa Sky",
+    artist: "Cezinando",
+    cover: require("./assets/album.jpeg"),
+  },
+  {
+    id: 2,
+    title: "Håper du har plass",
+    artist: "Cezinando",
+    cover: require("./assets/album2.jpg"),
+  },
+  {
+    id: 3,
+    title: "Vi er perfekt men verden er ikke det",
+    artist: "Cezinando",
+    cover: require("./assets/album3.jpeg"),
+  },
+  {
+    id: 4,
+    title: "Baby boss",
+    artist: "Cezinando",
+    cover: require("./assets/album4.jpeg"),
+  },
+];
 
 export default function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentSong = songs[currentIndex] ?? songs[0];
+
+  const handleNext = () => {
+    setCurrentIndex((current) => (current + 1) % songs.length);
+
+  }
+
+  const handlePrevious = () => {
+    setCurrentIndex(
+      currentIndex === 0 ? songs.length - 1 : currentIndex - 1
+    );
+  }
+
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -9,16 +52,16 @@ export default function App() {
         <Image style={styles.symbols} source={require("./assets/more.png")} />
       </View>
       <View style={styles.albumArt}>
-        <Image style={styles.albumCover} source={require("./assets/album.jpeg")} />
+        <Image style={styles.albumCover} source={currentSong.cover} />
       </View>
       <View style={styles.controls}>
         <View style={styles.songInfoContainer}>
           <View style={styles.songInfo}>
             <Text style={styles.titleText}>
-              Rosa Sky
+              {currentSong.title}
             </Text>
             <Text style={styles.artistText}>
-              Cezinando
+              {currentSong.artist}
             </Text>
           </View>
           <Image style={styles.checkSymbol} source={require("./assets/green_check.png")} />
@@ -36,9 +79,17 @@ export default function App() {
         </View>
         <View style={styles.controlButtons}>
           <Image style={styles.shuffleRepeatButton} source={require('./assets/shuffle.png')} />
-          <Image style={styles.skipButton} source={require('./assets/skip_forward.png')} />
+
+          <Pressable onPress={handlePrevious}>
+            <Image style={styles.skipButton} source={require('./assets/skip_backwards.png')} />
+          </Pressable>
+
           <Image style={styles.playButton} source={require('./assets/play_circle.png')} />
-          <Image style={styles.skipButton} source={require('./assets/skip_backwards.png')} />
+
+          <Pressable onPress={handleNext}>
+            <Image style={styles.skipButton} source={require('./assets/skip_forward.png')} />
+          </Pressable>
+
           <Image style={styles.shuffleRepeatButton} source={require('./assets/repeat.png')} />
         </View>
         <View style={styles.bottomSymbols}>
@@ -102,11 +153,13 @@ const styles = StyleSheet.create({
   songInfoContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    width: '100%'
   },
 
   songInfo: {
     gap: 5,
+    flex: 1
   },
 
   titleText: {
